@@ -11,9 +11,13 @@ public class Main {
         System.out.println(isPrime(4));
     }
 
+    private static boolean isDivible(Integer index, Integer number){
+        return number %index ==0;
+    }
     private static boolean isPrime(final int number) {
+
        return number >1 &&
                IntStream.range(2,number)
-               .noneMatch(index ->number %index ==0);
+               .noneMatch(index->isDivible(index,number));
     }
 }
