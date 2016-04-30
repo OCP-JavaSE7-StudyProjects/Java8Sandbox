@@ -1,5 +1,7 @@
 package com.nng;
 
+import java.util.stream.IntStream;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -10,9 +12,8 @@ public class Main {
     }
 
     private static boolean isPrime(final int number) {
-        for (int i = 2; i < number; i++) {
-            if (number % i == 0) return false;
-        }
-        return number > 1;
+       return number >1 &&
+               IntStream.range(2,number)
+               .noneMatch(index ->number %index ==0);
     }
 }
