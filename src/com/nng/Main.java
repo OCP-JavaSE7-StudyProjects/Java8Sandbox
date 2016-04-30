@@ -1,5 +1,7 @@
 package com.nng;
 
+import java.util.function.IntPredicate;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 public class Main {
@@ -11,13 +13,11 @@ public class Main {
         System.out.println(isPrime(4));
     }
 
-    private static boolean isDivible(Integer index, Integer number){
-        return number %index ==0;
-    }
     private static boolean isPrime(final int number) {
+        IntPredicate isDivisible = divisor -> number % divisor == 0;
 
-       return number >1 &&
-               IntStream.range(2,number)
-               .noneMatch(index->isDivible(index,number));
+        return number > 1 &&
+                IntStream.range(2, number)
+                        .noneMatch(isDivisible);
     }
 }
